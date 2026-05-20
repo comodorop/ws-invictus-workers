@@ -22,6 +22,8 @@ export class IngestExcelConsumer {
 
   @EventPattern('excel_queue')
   async processExcel(@Payload() data: any, @Ctx() context: RmqContext) {
+    console.log('Received message:', data);
+
     let movementIngestFileStatus:
       | 'PENDING'
       | 'COMPLETED'
@@ -33,6 +35,9 @@ export class IngestExcelConsumer {
       { file_id: data.fileId },
       { status: 'PROCESSING', started_at: new Date() },
     );
+
+    console.log('Processing file:', data.fileId);
+
     const channel = context.getChannelRef();
     const originalMsg = context.getMessage();
 
@@ -198,7 +203,10 @@ export class IngestExcelConsumer {
       );
 
       channel.ack(originalMsg);
+
+      console.log('FINISHED:', data.fileId);
     } catch (error) {
+      console.error('ERROR:', error);
       this.logger.error(`Fallo en el procesamiento de Excel: ${error.message}`);
       channel.nack(originalMsg, false, false);
     }
