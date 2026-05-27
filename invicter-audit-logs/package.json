@@ -1,0 +1,43 @@
+{
+  "name": "invicter-workers",
+  "version": "1.0.0",
+  "description": "API de ingesta invicter",
+  "main": "index.js",
+  "scripts": {
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
+  },
+  "author": "Edgar Morales",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/storage": "^7.19.0",
+    "@nestjs/common": "^11.1.17",
+    "@nestjs/config": "^4.0.3",
+    "@nestjs/core": "^11.1.17",
+    "@nestjs/jwt": "^11.0.2",
+    "@nestjs/microservices": "^11.1.17",
+    "@nestjs/platform-express": "^11.1.17",
+    "amqp-connection-manager": "^5.0.0",
+    "amqplib": "^0.10.9",
+    "bcrypt": "^6.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.15.1",
+    "knex": "^3.1.0",
+    "multer": "^2.1.1",
+    "pg": "^8.18.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "uuid": "^13.0.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/amqplib": "^0.10.8",
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.1.0"
+  }
+}
